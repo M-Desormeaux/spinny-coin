@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rotating Gold Coin</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+      // Set up the scene, camera, and renderer
+      const container = document.getElementById("container");
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      container.appendChild(renderer.domElement);
+
+      // Set up light sources
+      const lightOne = new THREE.PointLight(0xffffff, 1, 40);
+      lightOne.position.set(10, 20, 20);
+      scene.add(lightOne);
+
+      const lightTwo = new THREE.PointLight(0xffffff, 1, 40);
+      lightTwo.position.set(-10, 20, 20);
+      scene.add(lightTwo);
+
+      const lightThree = new THREE.PointLight(0xffffff, 1, 1000);
+      lightThree.position.set(0, -10);
+      scene.add(lightThree);
+
+      // Create a custom gold coin object using a geometry and a material
+      const geometry = new THREE.CylinderGeometry(1, 1, 0.1, 32);
+      geometry.rotateX(Math.PI / 2); // Rotate the geometry 90 degrees around the X-axis
+      const material = new THREE.MeshStandardMaterial({ color: 0xffd700 }); // Gold color
+      const coin = new THREE.Mesh(geometry, material);
+      scene.add(coin);
+
+      // Position the camera at a 15° angle from the front of the coin
+      const angle = 0;
+      const distance = 7;
+      const height = Math.sin(THREE.MathUtils.degToRad(angle)) * distance;
+      const zPosition = Math.cos(THREE.MathUtils.degToRad(angle)) * distance;
+      camera.position.set(0, height, zPosition);
+      camera.lookAt(coin.position);
+
+      // Animate the object rotation
+      function animate() {
+        requestAnimationFrame(animate);
+
+        // Rotate the object
+        coin.rotation.y += 0.01;
+
+        // Render the scene
+        renderer.render(scene, camera);
+      }
+
+      // Start the animation loop
+      animate();
+    </script>
+  </body>
+</html>
