@@ -34,14 +34,14 @@
       container.appendChild(renderer.domElement);
 
       // Set up light sources
-      const lightOne = new THREE.PointLight(0xffffff, 1, 40);
-      // 10 units right, 20 units up, 20 units towards the user
-      lightOne.position.set(10, 20, 20);
+      const lightOne = new THREE.PointLight(0xffffff, 1, 45);
+      // 10 units right, 20 units up, 15 units towards the user
+      lightOne.position.set(10, 20, 15);
       scene.add(lightOne);
 
-      const lightTwo = new THREE.PointLight(0xffffff, 1, 40);
-      // 10 units left, 20 units up, 20 units towards the user
-      lightTwo.position.set(-10, 20, 20);
+      const lightTwo = new THREE.PointLight(0xffffff, 1, 45);
+      // 10 units left, 20 units up, 15 units towards the user
+      lightTwo.position.set(-10, 20, 15);
       scene.add(lightTwo);
 
       const lightThree = new THREE.PointLight(0xffffff, 1, 1000);
