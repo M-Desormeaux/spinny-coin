@@ -32,15 +32,17 @@
 
       // Set up light sources
       const lightOne = new THREE.PointLight(0xffffff, 1, 40);
-      // 10 units right, 20 units up, 20 units towards user
+      // 10 units right, 20 units up, 20 units towards the user
       lightOne.position.set(10, 20, 20);
       scene.add(lightOne);
 
       const lightTwo = new THREE.PointLight(0xffffff, 1, 40);
+      // 10 units left, 20 units up, 20 units towards the user
       lightTwo.position.set(-10, 20, 20);
       scene.add(lightTwo);
 
       const lightThree = new THREE.PointLight(0xffffff, 1, 1000);
+      // Centered horizontally, 10 units down
       lightThree.position.set(0, -10);
       scene.add(lightThree);
 
