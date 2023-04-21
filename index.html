@@ -32,6 +32,7 @@
 
       // Set up light sources
       const lightOne = new THREE.PointLight(0xffffff, 1, 40);
+      // 10 units right, 20 units up, 20 units towards user
       lightOne.position.set(10, 20, 20);
       scene.add(lightOne);
 
@@ -52,7 +53,7 @@
 
       // Position the camera at a 15° angle from the front of the coin
       const angle = 0;
-      const distance = 7;
+      const distance = 14;
       const height = Math.sin(THREE.MathUtils.degToRad(angle)) * distance;
       const zPosition = Math.cos(THREE.MathUtils.degToRad(angle)) * distance;
       camera.position.set(0, height, zPosition);
